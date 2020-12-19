@@ -6,6 +6,12 @@ provider:
   runtime: java8
   stage: dev
   region: us-east-2
+  httpApi:
+    authorizers:
+      serviceAuthorizer:
+        identitySource: $request.header.Authorization
+        issuerUrl: https://dev--m89yvun.us.auth0.com/
+        audience: https://auth0-jwt-authorizer
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -18,39 +24,44 @@ functions:
   ListFlavors:
     handler: com.auth0.ListFlavors
     events:
-      - http:
+      - httpApi:
           path: /flavors
           method: get
   ListOrders:
     handler: com.auth0.ListOrders
     events:
-      - http:
+      - httpApi:
           path: /orders
           method: get
+          authorizer: serviceAuthorizer
   GetOrder:
     handler: com.auth0.GetOrder
     events:
-      - http:
+      - httpApi:
           path: /orders/{id}
           method: get
+          authorizer: serviceAuthorizer
   CreateOrder:
     handler: com.auth0.CreateOrder
     events:
-      - http:
+      - httpApi:
           path: /orders
           method: post
+          authorizer: serviceAuthorizer
   UpdateOrder:
     handler: com.auth0.UpdateOrder
     events:
-      - http:
+      - httpApi:
           path: /orders/{id}
           method: put
+          authorizer: serviceAuthorizer
   DeleteOrder:
     handler: com.auth0.DeleteOrder
     events:
-      - http:
+      - httpApi:
           path: /orders/{id}
-          method: delete          
+          method: delete     
+          authorizer: serviceAuthorizer     
 resources:
   Resources:
     ordersTable:
