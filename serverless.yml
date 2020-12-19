@@ -1,0 +1,68 @@
+service: icecream-api
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: java8
+  stage: dev
+  region: us-east-2
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+      Resource: "*"
+package:
+  artifact: target/${self:service}-${self:provider.stage}.jar
+
+functions:
+  ListFlavors:
+    handler: com.auth0.ListFlavors
+    events:
+      - http:
+          path: /flavors
+          method: get
+  ListOrders:
+    handler: com.auth0.ListOrders
+    events:
+      - http:
+          path: /orders
+          method: get
+  GetOrder:
+    handler: com.auth0.GetOrder
+    events:
+      - http:
+          path: /orders/{id}
+          method: get
+  CreateOrder:
+    handler: com.auth0.CreateOrder
+    events:
+      - http:
+          path: /orders
+          method: post
+  UpdateOrder:
+    handler: com.auth0.UpdateOrder
+    events:
+      - http:
+          path: /orders/{id}
+          method: put
+  DeleteOrder:
+    handler: com.auth0.DeleteOrder
+    events:
+      - http:
+          path: /orders/{id}
+          method: delete          
+resources:
+  Resources:
+    ordersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: orders
+        AttributeDefinitions:
+          - AttributeName: Id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: Id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
