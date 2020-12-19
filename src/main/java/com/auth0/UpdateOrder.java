@@ -27,14 +27,18 @@ public class UpdateOrder implements RequestHandler<Map<String, Object>, ApiGatew
 	@Override
 	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
 		LOG.info("received: {}", input);
-        return updateOrder((String) input.get("body"));  
+        Map<String,String> pathParameters =  (Map<String,String>)input.get("pathParameters");
+        String id = pathParameters.get("id");
+        return updateOrder(id, (String) input.get("body"));  
 	}
 
-    private ApiGatewayResponse updateOrder(String body) {
-        if (body == null) {
-	        System.err.println("body is null!");
+    private ApiGatewayResponse updateOrder(String id, String body) {
+        if (id == null || body == null) {
+	        System.err.println("id or body is null!");
             return ApiGatewayResponse.builder().setStatusCode(400).build();
 	    }
+        System.out.println("update id: " + id);
+
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
         DynamoDB dynamoDB = new DynamoDB(client);
         Table table = dynamoDB.getTable(orderTable);
@@ -42,8 +46,6 @@ public class UpdateOrder implements RequestHandler<Map<String, Object>, ApiGatew
         try {
             JsonNode jn = new ObjectMapper().readTree(body);
             String flavor = jn.get("Flavor").asText();
-            String id = jn.get("Id").asText();
-            System.out.println("update id: " + id);
 
             UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey(new PrimaryKey("Id", id))
                 .withUpdateExpression("set Flavor = :val1").withValueMap(new ValueMap().withString(":val1", flavor))
