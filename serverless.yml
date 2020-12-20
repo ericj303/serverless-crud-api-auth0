@@ -10,7 +10,7 @@ provider:
     authorizers:
       serviceAuthorizer:
         identitySource: $request.header.Authorization
-        issuerUrl: https://dev--m89yvun.us.auth0.com/
+        issuerUrl: <your issuer url here>
         audience: https://auth0-jwt-authorizer
   iamRoleStatements:
     - Effect: "Allow"
