@@ -14,6 +14,7 @@ Install Java 8 https://openjdk.java.net/install/
 Install Apache Maven https://maven.apache.org/download.cgi
 
 # To build and test the app
+- Update serverless.yml file in root directory with your issuer url and audience for Auth0 account.  Search for issuerUrl field.
 
 - mvn clean package
 
