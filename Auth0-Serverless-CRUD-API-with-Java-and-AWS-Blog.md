@@ -1,7 +1,7 @@
 ## TL;DR 
 AWS is the premier cloud platform, and building secure serverless apps that can handle Internet scale demands is easy with AWS and Auth0.  In this blog you will build a serverless order API for delicious ice cream, combining the new HTTP API option of API Gateway, Lambda, and DynamoDB.  You will deploy your cloud infrastructure with the Serverless Framework CLI, and use Auth0 to easily secure your API endpoints with JWT Authorizers.
 
-###Prerequisites
+### Prerequisites
 Sign up for AWS account: https://aws.amazon.com/free/
 
 Install node and npm: https://nodejs.org/en/
@@ -12,7 +12,7 @@ Install Java 8 or above: https://openjdk.java.net/install/
 
 Install Apache Maven: https://maven.apache.org/download.cgi
 
-###Introduction
+### Introduction
 First you will create a combination of public and secured API endpoints, to see the available ice cream flavors and to list, create, update and delete orders.  
 
 You’ll be using three AWS services:
@@ -24,7 +24,7 @@ You’ll be using three AWS services:
 - API Gateway: the API endpoint service that authenticates requests with Auth0 as needed, and then forwards them to the Lambdas.
 
 Here's the architecture of the app you will build:
-![ArchDiagram](https://github.com/ericj303/serverless-crud-api-auth0/blob/main/images/Serverless-CRUD-API-Auth0.png)
+[![ArchDiagram](https://github.com/ericj303/serverless-crud-api-auth0/blob/main/images/Serverless-CRUD-API-Auth0.png)]
 
 The request flow is as follows:
 
@@ -667,6 +667,10 @@ functions:
 layers:
   None
   ```
+
+To see your API in the AWS console, go to the "Services" dropdown menu in upper left, and search for "API Gateway".  Select it in result list, then click on "dev-icecream-api" in APIs list on API Gateway main page.  Choose "Authorization" in side menu in "Develop" section and click on /orders "POST" route.  The JWT symbol by the order routes indicates they are secured by JWT Authorization.
+[![ArchDiagram](https://github.com/ericj303/serverless-crud-api-auth0/blob/main/images/dev-icecream-api-routes-and-auth.png)]
+
 ### Test It Out!
 
 Use the endpoint outputs to get the unique API Gateway id for your API.  Use this to complete the test URLs (ie. the section in front of "execute" in URL https://YOUR-API-ID-HERE.execute-api.us-east-2.amazonaws.com).  Also, change the "us-east-2" region part of the URL, if you selected a different region.  If you receive a "HTTP/1.1 503 Service Unavailable" on your first curl run for an endpoint, rerun curl again.
