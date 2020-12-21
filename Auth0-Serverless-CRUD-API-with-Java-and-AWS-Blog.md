@@ -669,7 +669,8 @@ layers:
   None
   ```
 
-To see your API in the AWS console, go to the "Services" dropdown menu in upper left, and search for "API Gateway".  Select it in result list, then click on "dev-icecream-api" in APIs list on API Gateway main page.  Choose "Authorization" in side menu in "Develop" section and click on /orders "POST" route.  The JWT symbol by the order routes indicates they are secured by JWT Authorization.
+To see your API in the AWS console, go to the "Services" dropdown menu in upper left, and search for "API Gateway".  Select it in the result list, then click on "dev-icecream-api" in APIs list on API Gateway main page.  Choose "Authorization" in side menu in "Develop" section and click on /orders "POST" route.  The JWT symbol by the order routes indicates they are secured by JWT Authorization.
+<br>
 ![APIRoutes](https://github.com/ericj303/serverless-crud-api-auth0/blob/main/images/dev-icecream-api-routes-and-auth.png)
 
 ### Test It Out!
