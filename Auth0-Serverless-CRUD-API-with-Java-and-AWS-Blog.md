@@ -1,5 +1,5 @@
 ## TL;DR 
-AWS is the premier cloud platform, and building secure serverless apps that can handle Internet scale demands is easy with AWS and Auth0.  In this blog you will build a serverless order API for delicious ice cream, combining the new HTTP API option of API Gateway, Lambda, and DynamoDB.  You will deploy your cloud infrastructure with the Serverless Framework CLI, and use Auth0 to easily secure your API endpoints with JWT Authorizers.
+AWS is the premier cloud platform, and building secure serverless apps that can handle Internet scale demands is easy with AWS and Auth0.  In this blog you will build a serverless order API for delicious ice cream, combining the new HTTP API option of API Gateway, with Lambda, and DynamoDB.  You will deploy your cloud infrastructure with the Serverless Framework CLI, and use Auth0 to easily secure your API endpoints with JWT Authorizers.
 
 ### Prerequisites
 Sign up for AWS account: https://aws.amazon.com/free/
