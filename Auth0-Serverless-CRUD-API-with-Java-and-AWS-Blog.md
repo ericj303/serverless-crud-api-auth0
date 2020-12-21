@@ -37,6 +37,7 @@ The request flow is as follows:
 
 ### Maven Pom.xml Setup
 Start with creating the structure of your Serverless project, by opening a terminal and running:
+
 `serverless create --template aws-java-maven --name icecream-api -p icecream-api`
 
 Open the pom.xml and replace the app metadata:
