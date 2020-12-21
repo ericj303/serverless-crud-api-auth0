@@ -6,57 +6,56 @@ provider:
   runtime: java8
   stage: dev
   region: us-east-2
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+      Resource: "*"
   httpApi:
     authorizers:
       serviceAuthorizer:
         identitySource: $request.header.Authorization
         issuerUrl: <your issuer url here>
         audience: https://auth0-jwt-authorizer
-  iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-        - "dynamodb:*"
-      Resource: "*"
 package:
   artifact: target/${self:service}-${self:provider.stage}.jar
-
 functions:
   ListFlavors:
-    handler: com.auth0.ListFlavors
+    handler: com.serverless.ListFlavors
     events:
       - httpApi:
           path: /flavors
           method: get
   ListOrders:
-    handler: com.auth0.ListOrders
+    handler: com.serverless.ListOrders
     events:
       - httpApi:
           path: /orders
           method: get
           authorizer: serviceAuthorizer
   GetOrder:
-    handler: com.auth0.GetOrder
+    handler: com.serverless.GetOrder
     events:
       - httpApi:
           path: /orders/{id}
           method: get
           authorizer: serviceAuthorizer
   CreateOrder:
-    handler: com.auth0.CreateOrder
+    handler: com.serverless.CreateOrder
     events:
       - httpApi:
           path: /orders
           method: post
           authorizer: serviceAuthorizer
   UpdateOrder:
-    handler: com.auth0.UpdateOrder
+    handler: com.serverless.UpdateOrder
     events:
       - httpApi:
           path: /orders/{id}
           method: put
           authorizer: serviceAuthorizer
   DeleteOrder:
-    handler: com.auth0.DeleteOrder
+    handler: com.serverless.DeleteOrder
     events:
       - httpApi:
           path: /orders/{id}

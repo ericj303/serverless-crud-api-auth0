@@ -22,28 +22,28 @@ Install Apache Maven https://maven.apache.org/download.cgi
 
 - Get flavors - no auth needed
 
-    curl -i https://nz94nnimbe.execute-api.us-east-2.amazonaws.com/flavors
+    curl -i https://xu2qdvpa5h.execute-api.us-east-2.amazonaws.com/flavors
 
 - Everything else needs auth header.  If receive a "HTTP/1.1 503 Service Unavailable", just run curl again.
 
 - POST new order
 
-    curl -i  -H "Content-Type: application/json" -d '{"Customer":"Sue","Flavor":"BubbleGum"}' -X POST https://nz94nnimbe.execute-api.us-east-2.amazonaws.com/orders
+    curl -i  -H "Content-Type: application/json" -d '{"Customer":"Sue","Flavor":"BubbleGum"}' -X POST https://xu2qdvpa5h.execute-api.us-east-2.amazonaws.com/orders
 
 - Get all orders
 
-    curl -i  https://nz94nnimbe.execute-api.us-east-2.amazonaws.com/orders
+    curl -i  https://xu2qdvpa5h.execute-api.us-east-2.amazonaws.com/orders
 
 - Update flavor on order, update id
 
-    curl -i  -H "Content-Type: application/json" -d '{"Flavor":"chocolateChip"}' -X PUT https://nz94nnimbe.execute-api.us-east-2.amazonaws.com/orders/1
+    curl -i  -H "Content-Type: application/json" -d '{"Flavor":"chocolateChip"}' -X PUT https://xu2qdvpa5h.execute-api.us-east-2.amazonaws.com/orders/1
 
 - Delete by id
 
-    curl -i  https://nz94nnimbe.execute-api.us-east-2.amazonaws.com/orders/1 -X DELETE
+    curl -i  https://xu2qdvpa5h.execute-api.us-east-2.amazonaws.com/orders/1 -X DELETE
 
 - Get all orders and see it's deleted
 
-    curl -i  https://nz94nnimbe.execute-api.us-east-2.amazonaws.com/orders
+    curl -i  https://xu2qdvpa5h.execute-api.us-east-2.amazonaws.com/orders
 
 - Undeploy the app:  sls remove

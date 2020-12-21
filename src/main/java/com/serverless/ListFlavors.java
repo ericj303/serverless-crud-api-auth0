@@ -1,9 +1,9 @@
-package com.auth0;
+package com.serverless;
 
 import com.amazonaws.services.dynamodbv2.document.*;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.auth0.model.Flavor;
+import com.serverless.model.Flavor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

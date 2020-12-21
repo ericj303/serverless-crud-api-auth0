@@ -1,4 +1,4 @@
-package com.auth0.model;
+package com.serverless.model;
   
 public class Flavor {
     private String flavor;

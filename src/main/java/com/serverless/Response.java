@@ -1,4 +1,4 @@
-package com.auth0;
+package com.serverless;
 
 import java.util.Map;
 

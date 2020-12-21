@@ -1,4 +1,4 @@
-package com.auth0;
+package com.serverless;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
