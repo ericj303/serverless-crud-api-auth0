@@ -1,5 +1,5 @@
 ## TL;DR 
-AWS is the premier cloud platform, and building secure serverless apps that can handle Internet scale demands is easy with AWS and Auth0.  In this blog you will build a serverless order API for delicious ice cream, combining the new HTTP API option of API Gateway, Lambda, and DynamoDB.  You will deploy your cloud infrastructure with the Serverless Framework CLI, and use Auth0 to easily secure your API endpoints with JWT Authorizers.
+AWS is the premier cloud platform, and building secure serverless apps that can handle Internet scale demands is easy with AWS and Auth0.  In this blog you will build a serverless order API for delicious ice cream, combining the new HTTP API option of API Gateway, with Lambda, and DynamoDB.  You will deploy your cloud infrastructure with the Serverless Framework CLI, and use Auth0 to easily secure your API endpoints with JWT Authorizers.
 
 ### Prerequisites
 Sign up for AWS account: https://aws.amazon.com/free/
@@ -37,6 +37,7 @@ The request flow is as follows:
 
 ### Maven Pom.xml Setup
 Start with creating the structure of your Serverless project, by opening a terminal and running:
+
 `serverless create --template aws-java-maven --name icecream-api -p icecream-api`
 
 Open the pom.xml and replace the app metadata:
@@ -132,7 +133,7 @@ Next we add the order-related Lambdas.  Notice these have an authorizer in the `
 ```
 As this is YAML, make sure they are all indented to the same level as the ListFlavors function.  As the names indicate, ListOrders will return all orders, GetOrder a single order, CreateOrder makes a new one, UpdateOrder allows the flavor of an order to be changed, and DeleteOrder removes it.
 
-You need a place for your data, so next add a DynamoDB table.  Add the following `resources` section, with `resources` key word aligned to the far left, like the `functions` and `provider` ones.
+You need a place for your data, so next add a DynamoDB table.  Paste the following `resources` section, with `resources` key word aligned to the far left, like the `functions` and `provider` ones.
 ```
 resources:
   Resources:
@@ -223,7 +224,7 @@ public class ListFlavors implements RequestHandler<Map<String, Object>, ApiGatew
 }
 
 ```
-All the Lambdas have a handleRequest method, which takes in the API Gateway input as a Map, which contains any arguments or POST data body needed.  This Lambda generates a list of ice cream flavors to return to the user.
+All the Lambdas have a handleRequest method, which takes in the API Gateway input as a Map, which contains any arguments or POST/PUT data body needed.  This Lambda generates a list of ice cream flavors to return to the user.  The Serverless Framework conveniently handles converting returned data to JSON format.
 
 Create the file ListOrders.java and insert the following code:
 ```
@@ -292,7 +293,7 @@ public class ListOrders implements RequestHandler<Map<String, Object>, ApiGatewa
 ```
 The AmazonDynamoDBClientBuilder is used for it's ease of use.  This Lambda runs a DynamoDB scan of table items, returning all orders in the table.
 
-Create the file GetOrder.java and insert the following code:
+Make the file GetOrder.java and paste the following code:
 ```
 package com.serverless;
 
@@ -427,7 +428,7 @@ public class CreateOrder implements RequestHandler<Map<String, Object>, ApiGatew
 ```
 This code adds the new order to our NoSQL DynamoDB database!  Because of it's NoSQL nature, we didn't have to define a table schema up front, but can simply add the customer and flavor columns on the fly.
 
-Create the file UpdateOrder.java and insert the following code:
+Add the file UpdateOrder.java and insert the following code:
 ```
 package com.serverless;
 
@@ -500,7 +501,7 @@ public class UpdateOrder implements RequestHandler<Map<String, Object>, ApiGatew
 ```
 All flavor changes to an order are done by finding the relevant order by id, and updating the flavor field.
 
-Finally create the last Lambda file, DeleteOrder.java, and insert the following code:
+Finally create the last Lambda file, DeleteOrder.java, and add the following code:
 ```
 package com.serverless;
 
@@ -567,7 +568,7 @@ and change to it.
 
 `cd model` 
 
-Create the file Flavor.java and insert the following code:
+Make the file Flavor.java and insert the following code:
 ```
 package com.serverless.model;
   
@@ -584,7 +585,7 @@ public class Flavor {
 }
 ```
 
-Then create the file Order.java and insert the following code:
+Then create the file Order.java and add the following code:
 ```
 package com.serverless.model;
   
@@ -731,7 +732,7 @@ Use the endpoint outputs to get the unique API Gateway id for your API.  Use thi
 
 
 ### Summary
-AWS is amazing platform to build highly scalable serverless apps.  The Serverless Framework allows best practice IaC (Infrastructure-as-Code) deployment of sophisticated cloud infrastructure combining API Gateway, Lambda and DynamoDB services.  Authorizing your endpoints is easy with the new HTTP API's JWT Authorizer functionality, and a identity provider like Auth0.  
+AWS is amazing platform to build highly scalable serverless apps.  The Serverless Framework allows best practice IaC (Infrastructure-as-Code) deployment of sophisticated cloud infrastructure combining API Gateway, Lambda and DynamoDB services.  It has many nice features, such as automatically converting your returned data to JSON format, and many plugins are available for additional functionality.  Also, authorizing your endpoints is easy with the new HTTP API's JWT Authorizer functionality, and a identity provider like Auth0.  
 
 Enjoy building on AWS!
 
