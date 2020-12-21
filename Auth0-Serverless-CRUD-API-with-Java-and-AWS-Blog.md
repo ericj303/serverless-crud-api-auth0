@@ -293,7 +293,7 @@ public class ListOrders implements RequestHandler<Map<String, Object>, ApiGatewa
 ```
 The AmazonDynamoDBClientBuilder is used for it's ease of use.  This Lambda runs a DynamoDB scan of table items, returning all orders in the table.
 
-Create the file GetOrder.java and insert the following code:
+Make the file GetOrder.java and paste the following code:
 ```
 package com.serverless;
 
@@ -428,7 +428,7 @@ public class CreateOrder implements RequestHandler<Map<String, Object>, ApiGatew
 ```
 This code adds the new order to our NoSQL DynamoDB database!  Because of it's NoSQL nature, we didn't have to define a table schema up front, but can simply add the customer and flavor columns on the fly.
 
-Create the file UpdateOrder.java and insert the following code:
+Add the file UpdateOrder.java and insert the following code:
 ```
 package com.serverless;
 
@@ -501,7 +501,7 @@ public class UpdateOrder implements RequestHandler<Map<String, Object>, ApiGatew
 ```
 All flavor changes to an order are done by finding the relevant order by id, and updating the flavor field.
 
-Finally create the last Lambda file, DeleteOrder.java, and insert the following code:
+Finally create the last Lambda file, DeleteOrder.java, and add the following code:
 ```
 package com.serverless;
 
