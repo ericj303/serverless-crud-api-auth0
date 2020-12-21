@@ -133,7 +133,7 @@ Next we add the order-related Lambdas.  Notice these have an authorizer in the `
 ```
 As this is YAML, make sure they are all indented to the same level as the ListFlavors function.  As the names indicate, ListOrders will return all orders, GetOrder a single order, CreateOrder makes a new one, UpdateOrder allows the flavor of an order to be changed, and DeleteOrder removes it.
 
-You need a place for your data, so next add a DynamoDB table.  Add the following `resources` section, with `resources` key word aligned to the far left, like the `functions` and `provider` ones.
+You need a place for your data, so next add a DynamoDB table.  Paste the following `resources` section, with `resources` key word aligned to the far left, like the `functions` and `provider` ones.
 ```
 resources:
   Resources:
