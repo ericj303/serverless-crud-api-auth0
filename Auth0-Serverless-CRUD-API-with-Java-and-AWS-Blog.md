@@ -568,7 +568,7 @@ and change to it.
 
 `cd model` 
 
-Create the file Flavor.java and insert the following code:
+Make the file Flavor.java and insert the following code:
 ```
 package com.serverless.model;
   
@@ -585,7 +585,7 @@ public class Flavor {
 }
 ```
 
-Then create the file Order.java and insert the following code:
+Then create the file Order.java and add the following code:
 ```
 package com.serverless.model;
   
