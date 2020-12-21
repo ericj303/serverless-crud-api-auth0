@@ -224,7 +224,7 @@ public class ListFlavors implements RequestHandler<Map<String, Object>, ApiGatew
 }
 
 ```
-All the Lambdas have a handleRequest method, which takes in the API Gateway input as a Map, which contains any arguments or POST data body needed.  This Lambda generates a list of ice cream flavors to return to the user.
+All the Lambdas have a handleRequest method, which takes in the API Gateway input as a Map, which contains any arguments or POST/PUT data body needed.  This Lambda generates a list of ice cream flavors to return to the user.
 
 Create the file ListOrders.java and insert the following code:
 ```
