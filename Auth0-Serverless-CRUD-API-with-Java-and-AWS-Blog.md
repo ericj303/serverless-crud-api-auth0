@@ -224,7 +224,7 @@ public class ListFlavors implements RequestHandler<Map<String, Object>, ApiGatew
 }
 
 ```
-All the Lambdas have a handleRequest method, which takes in the API Gateway input as a Map, which contains any arguments or POST/PUT data body needed.  This Lambda generates a list of ice cream flavors to return to the user.
+All the Lambdas have a handleRequest method, which takes in the API Gateway input as a Map, which contains any arguments or POST/PUT data body needed.  This Lambda generates a list of ice cream flavors to return to the user.  The Serverless Framework conveniently handles converting returned data to JSON format.
 
 Create the file ListOrders.java and insert the following code:
 ```
@@ -728,7 +728,7 @@ Use the endpoint outputs to get the unique API Gateway id for your API.  Use thi
 
 
 ### Summary
-AWS is amazing platform to build highly scalable serverless apps.  The Serverless Framework allows best practice IaC (Infrastructure-as-Code) deployment of sophisticated cloud infrastructure combining API Gateway, Lambda and DynamoDB services.  Authorizing your endpoints is easy with the new HTTP API's JWT Authorizer functionality, and a identity provider like Auth0.  
+AWS is amazing platform to build highly scalable serverless apps.  The Serverless Framework allows best practice IaC (Infrastructure-as-Code) deployment of sophisticated cloud infrastructure combining API Gateway, Lambda and DynamoDB services.  It has many nice features, such as automatically converting your returned data to JSON format, and many plugins are available for additional functionality.  Also, authorizing your endpoints is easy with the new HTTP API's JWT Authorizer functionality, and a identity provider like Auth0.  
 
 Enjoy building on AWS!
 
