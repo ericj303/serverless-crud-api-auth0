@@ -24,7 +24,7 @@ You’ll be using three AWS services:
 - API Gateway: the API endpoint service that authenticates requests with Auth0 as needed, and then forwards them to the Lambdas.
 
 Here's the architecture of the app you will build:
-[![ArchDiagram](https://github.com/ericj303/serverless-crud-api-auth0/blob/main/images/Serverless-CRUD-API-Auth0.png)]
+![ArchDiagram](https://github.com/ericj303/serverless-crud-api-auth0/blob/main/images/Serverless-CRUD-API-Auth0.png)
 
 The request flow is as follows:
 
