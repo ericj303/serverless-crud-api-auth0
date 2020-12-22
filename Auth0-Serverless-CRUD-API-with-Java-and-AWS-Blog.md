@@ -61,7 +61,7 @@ Next add the DynamoDB library for our read/write calls to the `<dependencies>` s
 ```
 Save your changes and run `mvn clean package` to install all the dependencies.  
 
-### serverless.yml Configuration
+### Serverless.yml Configuration
 Open the serverless.yml file, deleting the initial contents and pasting in:
 ```
 service: icecream-api
