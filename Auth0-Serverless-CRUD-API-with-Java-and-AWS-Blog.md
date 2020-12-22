@@ -4,7 +4,7 @@ AWS is the premier cloud platform, and building secure serverless apps that can 
 ### Prerequisites
 Sign up for AWS account: https://aws.amazon.com/free/
 
-Setup your local AWS credentials:  https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup.html#setup-credentials
+Setup your local AWS credentials with full administrator user permissions:  https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/setup.html#setup-credentials
 
 Install node and npm: https://nodejs.org/en/
 
